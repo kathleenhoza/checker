@@ -69,11 +69,17 @@ def main():
 			missing_data.append(image_list[i]+'_spectra_plot.png')
 		if 'R' in eye_list[i] and 'L' in eye_list[i]:
 			try:
-				path=working_directory+image_list[i]+'avg_spectra_plot.png'
+				path=working_directory+image_list[i]+'_avg_spectra_plot.png'
 				spectra=open(path)
 				print('	'+image_list[i]+'_avg_spectra_plot.png')
 			except:
 				missing_data.append(image_list[i]+'_avg_spectra_plot.png')
+			try:
+				path=working_directory+image_list[i]+'_avg_spectra.csv'
+				spectra=open(path)
+				print('	'+image_list[i]+'_avg_spectra.csv')
+			except:
+				missing_data.append(image_list[i]+'_avg_spectra.csv')
 		#***************************************************************
 		#RIGHT EYE DCS, FALSE COLOR, ROI IMAGE
 		if 'R' in eye_list[i]:
@@ -85,7 +91,6 @@ def main():
 				missing_data.append(image_list[i]+'_RXXX_DCS.jpg')
 			try:
 				path=working_directory+image_list[i]+'_R*_FalseColor.jpg'
-				print(path)
 				false_color_R=glob.glob(path)[0]
 				print('	'+false_color_R[-37:])	
 			except:
@@ -93,7 +98,7 @@ def main():
 			try:
 				path=working_directory+image_list[i]+'_R*_ROIsOverlay.jpg'
 				overlay_R=glob.glob(path)[0]
-				print('	'+overlay[-38:])	
+				print('	'+overlay_R[-38:])	
 			except:
 				missing_data.append(image_list[i]+'_RXXX_ROIsOverlay.jpg')
 		#***************************************************************
@@ -107,15 +112,15 @@ def main():
 				missing_data.append(image_list[i]+'_LXXX_DCS.jpg')
 			try:
 				path=working_directory+image_list[i]+'_L*_FalseColor.jpg'
-				print(path)
+
 				false_color_L=glob.glob(path)[0]
 				print('	'+false_color_L[-37:])	
 			except:
 				missing_data.append(image_list[i]+'_LXXX_FalseColor.jpg')
 			try:
-				path=working_directory+image_list[i]+'_L_ROIsOverlay.jpg'
+				path=working_directory+image_list[i]+'_L*_ROIsOverlay.jpg'
 				overlay_L=glob.glob(path)[0]
-				print('	'+overlay[-38:])	
+				print('	'+overlay_L[-38:])	
 			except:
 				missing_data.append(image_list[i]+'_LXXX_ROIsOverlay.jpg')
 				
